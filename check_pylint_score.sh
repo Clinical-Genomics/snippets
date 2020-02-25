@@ -11,7 +11,12 @@ pylint --rcfile=.configs/pylintrc --jobs=0 --exit-zero $(< $TRAVIS_HOME/before_f
 
 set -e
 
-(grep -F "/10, -" $TRAVIS_HOME/pylint_before_output.txt ||
-grep -F "/10, +0.00" $TRAVIS_HOME/pylint_before_output.txt ||
-(echo "pylint score decreased, please try again after fixing some lint issues." && cat $TRAVIS_HOME/pylint_after_output.txt && false)
+(
+  grep -F "/10, -" $TRAVIS_HOME/pylint_before_output.txt ||
+  grep -F "/10, +0.00" $TRAVIS_HOME/pylint_before_output.txt ||
+  (
+    echo "pylint score decreased, please try again after fixing some lint issues." &&
+    cat $TRAVIS_HOME/pylint_after_output.txt &&
+    grep -F "Your code has been rated at" $TRAVIS_HOME/pylint_before_output.txt | cut -f 2-7 -d " " && false
+  )
 )
