@@ -13,7 +13,7 @@ set -e
   grep -F "/10, -" $TRAVIS_HOME/pylint_before_output.txt ||
   grep -F "/10, +0.00" $TRAVIS_HOME/pylint_before_output.txt ||
   (
-    echo "pylint score decreased, please try again after fixing some lint issues." &&
+    echo "Pylint score decreased, please try again after fixing some lint issues." &&
     cat $TRAVIS_HOME/pylint_after_output.txt &&
     printf "Old " &&
     grep -F "Your code has been rated at" $TRAVIS_HOME/pylint_before_output.txt | cut -f 2-7 -d " " &&
