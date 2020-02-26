@@ -16,6 +16,8 @@ set -e
     echo "pylint score decreased, please try again after fixing some lint issues." &&
     cat $TRAVIS_HOME/pylint_after_output.txt &&
     printf "Old " &&
-    grep -F "Your code has been rated at" $TRAVIS_HOME/pylint_before_output.txt | cut -f 2-7 -d " " && false
+    grep -F "Your code has been rated at" $TRAVIS_HOME/pylint_before_output.txt | cut -f 2-7 -d " " &&
+    echo "Please improve the new code to at least the level of the old code" &&
+    false
   )
 )
