@@ -7,7 +7,7 @@ pylint --rcfile=.configs/pylintrc --jobs=0 --exit-zero $(< $TRAVIS_HOME/after_fi
 git checkout $TRAVIS_BRANCH
 pylint --rcfile=.configs/pylintrc --jobs=0 --exit-zero $(< $TRAVIS_HOME/before_files.txt) > $TRAVIS_HOME/pylint_before_output.txt
 
-set -e
+set -e -x
 
 (
   grep -F "/10, -" $TRAVIS_HOME/pylint_before_output.txt ||
