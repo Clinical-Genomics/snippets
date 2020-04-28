@@ -2,6 +2,8 @@
 
 set -x
 
+pip install "pylint<2.5"
+
 grep -r -E "pylint. {0,1}disable\=" .; if [ $? -eq 0 ]; then echo "Can not run pylint scoring with any pylint warnings disabled, please remove them and try again" && false; else true; fi
 (git --no-pager diff --name-only --diff-filter=M $TRAVIS_COMMIT_RANGE | grep -F ".py" || echo "$(basename "$PWD")") > $TRAVIS_HOME/before_files.txt
 (git --no-pager diff --name-only --diff-filter=AM $TRAVIS_COMMIT_RANGE | grep -F ".py" || echo "$(basename "$PWD")") > $TRAVIS_HOME/after_files.txt
