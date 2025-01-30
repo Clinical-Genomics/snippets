@@ -1,0 +1,16 @@
+repository_type: pipeline
+
+nf_core_version: 3.2.0
+
+lint: {}
+
+template:
+  org: nf-core
+  name: snippet
+  description: short-read Nono-Invasive Prenatal pipeline evaluation Tool
+  author: Rasmus Burge, Ramprasad Neethiraj, Jesper Eisfeldt
+  version: 1.0.0dev
+  force: true
+  outdir: /Users/rasmusburge/Documents/GitHub/RasmusBurge-CG.github.io/snippets
+  skip_features: []
+  is_nfcore: true
